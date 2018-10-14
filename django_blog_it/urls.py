@@ -1,0 +1,113 @@
+from django.conf.urls import url
+from django.conf.urls.static import static
+from .django_blog_it.views import AdminLoginView, admin_logout, PostList, PostCreateView, PostDetailView, PostDeleteView, PostEditView, BlogPostBulkActionsView, CategoryList, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, CategoryStatusUpdateView, CategoryBulkActionsView, PagesListView, PageCreateView, PageUpdateView, page_status_update, PageDeleteView, BulkActionsPageView, upload_photos, recent_photos, UserListView, UserCreateView, UserUpdateView, user_status_update, edit_user_role, UserDeleteView, UserBulkActionsView, MenuListView, MenuCreateView, MenuUpdateView, menu_status_update, MenuBulkActionsView, ThemesList, ThemeCreateView, ThemeDetailView, ThemeUpdateView, DeleteThemeView, ThemesBulkActionsView, theme_status_update, configure_contact_us, ChangePasswordView
+from .posts.views import Home, BlogPostView, SelectedCategoryView, SelectedTagView, ArchiveView, contact_us, PageView
+from .settings import MEDIA_URL, MEDIA_ROOT
+
+
+urlpatterns = [
+    url('', Home.as_view(), name='index'),
+    url('blog/contact/', contact_us, name='contact_us'),
+    url('blog/category/(?P<category_slug>[-\w]+)/', SelectedCategoryView.as_view(), name='selected_category'),
+    url('blog/tags/(?P<tag_slug>[-\w]+)/', SelectedTagView.as_view(), name='selected_tag'),
+    url('blog/(?P<year>\w{0,})/(?P<month>\w{0,})/', ArchiveView.as_view(), name='archive_posts'),
+    url('blog/(?P<blog_slug>[-\w]+)/', BlogPostView.as_view(), name='blog_post_view'),
+
+    url('dashboard/', AdminLoginView.as_view(), name='admin_login'),
+    #url(r'^dashboard/gplus/$', google_login, name='google_login'),
+    #url(r'^fb/$', facebook_login, name='facebook_login'),
+    url('dashboard/logout/',
+        admin_logout,
+        name='admin_logout'),
+    url('dashboard/blog/',
+        PostList.as_view(),
+        name='blog'),
+    url('dashboard/add/',
+        PostCreateView.as_view(),
+        name='blog_add'),
+    url('dashboard/view/(?P<blog_slug>[-\w]+)/',
+        PostDetailView.as_view(),
+        name='view_blog'),
+    url('dashboard/delete/(?P<blog_slug>[-\w]+)/',
+        PostDeleteView.as_view(),
+        name='delete_blog'),
+    url('dashboard/edit/(?P<blog_slug>[-\w]+)/',
+        PostEditView.as_view(),
+        name='edit_blog'),
+    url('dashboard/bulk_actions_blog/',
+        BlogPostBulkActionsView.as_view(),
+        name='bulk_actions_blog'),
+
+    url('dashboard/category/', CategoryList.as_view(), name='categories'),
+    url('dashboard/category/add/', CategoryCreateView.as_view(), name='add_category'),
+    url('dashboard/category/edit/(?P<category_slug>[-\w]+)/', CategoryUpdateView.as_view(), name='edit_category'),
+    url('dashboard/category/delete/(?P<category_slug>[-\w]+)/', CategoryDeleteView.as_view(), name='delete_category'),
+    url('dashboard/category/status/(?P<category_slug>[-\w]+)/', CategoryStatusUpdateView.as_view(), name='category_status_update'),
+    # pages
+    url('dashboard/bulk_actions_category/',
+        CategoryBulkActionsView.as_view(), name='bulk_actions_category'),
+
+    url('dashboard/pages/', PagesListView.as_view(), name='pages'),
+    url('dashboard/pages/add/', PageCreateView.as_view(), name='add_page'),
+    url('dashboard/pages/edit/(?P<page_slug>[-\w]+)/',
+        PageUpdateView.as_view(), name='edit_page'),
+    url('dashboard/pages/update/(?P<page_slug>[-\w]+)/',
+        page_status_update, name='page_status_update'),
+    url('dashboard/pages/delete/(?P<page_slug>[-\w]+)/',
+        PageDeleteView.as_view(), name='delete_page'),
+    url('dashboard/bulk_actions_pages/',
+        BulkActionsPageView.as_view(), name='bulk_actions_pages'),
+    url('(?P<page_slug>[-\w]+)/', PageView.as_view(), name='page_view'),
+
+    url('dashboard/upload_photos/', upload_photos, name='upload_photos'),
+    url('dashboard/recent_photos/', recent_photos, name='recent_photos'),
+    url('dashboard/users/', UserListView.as_view(), name='users'),
+    url('dashboard/users/add/', UserCreateView.as_view(), name='add_user'),
+    url('dashboard/user/edit/(?P<pk>[-\w]+)/', UserUpdateView.as_view(), name='edit_user'),
+    url('dashboard/user/update/(?P<pk>[-\w]+)/', user_status_update, name='user_status_update'),
+    url('dashboard/user/edit/(?P<pk>[-\w]+)/user_role/',
+        edit_user_role, name='edit_user_role'),
+    url('dashboard/user/delete/(?P<pk>[-\w]+)/',
+        UserDeleteView.as_view(), name='delete_user'),
+    url('dashboard/bulk_actions_users/',
+        UserBulkActionsView.as_view(), name='bulk_actions_users'),
+
+    # menu management
+    url('dashboard/menu/', MenuListView.as_view(), name='menus'),
+    url('dashboard/menu/add/', MenuCreateView.as_view(), name='add_menu'),
+    url('dashboard/menu/edit/(?P<pk>[-\w]+)/', MenuUpdateView.as_view(), name='edit_menu'),
+    url('dashboard/menu/update/(?P<pk>[-\w]+)/', menu_status_update, name='menu_status_update'),
+    url('dashboard/bulk_actions_menu/',
+        MenuBulkActionsView.as_view(), name='bulk_actions_menu'),
+
+    # themes management
+    url('dashboard/themes/', ThemesList.as_view(), name='themes'),
+    # url(r'^dashboard/themes/add/$', add_theme, name='add_theme'),
+    url('dashboard/themes/add/',
+        ThemeCreateView.as_view(),
+        name='add_theme'),
+    url('dashboard/themes/(?P<theme_slug>[-\w]+)/',
+        ThemeDetailView.as_view(),
+        name='view_theme'),
+    url('dashboard/themes/edit/(?P<pk>[0-9]+)/',
+        ThemeUpdateView.as_view(),
+        name='edit_theme'),
+    # url(r'^dashboard/themes/edit/(?P<theme_slug>[-\w]+)/$',
+    #     edit_theme, name='edit_theme'),
+    url('dashboard/themes/delete/(?P<pk>[-\w]+)/',
+        DeleteThemeView.as_view(),
+        name='delete_theme'),
+    # url(r'^dashboard/themes/delete/(?P<theme_slug>[-\w]+)/$',
+    #     delete_theme, name='delete_theme'),
+    url('dashboard/bulk_actions_themes/',
+        ThemesBulkActionsView.as_view(), name='bulk_actions_themes'),
+
+    url('dashboard/themes/update/(?P<theme_slug>[-\w]+)/',
+        theme_status_update,
+        name='theme_status_update'),
+
+    url('dashboard/contactUs/',
+        configure_contact_us, name='configure_contact_us'),
+    url('dashboard/change-password/', ChangePasswordView.as_view(), name='change_password'),
+
+] + static(MEDIA_URL, document_root=MEDIA_ROOT)
