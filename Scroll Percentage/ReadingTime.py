@@ -11,12 +11,12 @@ class CalculateTime():
 		return str(minutes) + " minutes " + str(seconds) + " seconds "
     
     
-**ALSO MAKE ENTRIES IN**
+#ALSO MAKE ENTRIES IN
 
-**models.py --> class Post**
+**models.py --> class Post
 avg_time = models.CharField(max_length = 40, default='')
 
-**views.py --> class in which you store post in database**
+**views.py --> class in which you store post in database
   //add before saving post in database
     post.avg_time = CalculateTime.calTime(post.text)
     
