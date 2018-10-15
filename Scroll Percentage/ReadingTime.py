@@ -16,7 +16,7 @@ class CalculateTime():
 **models.py --> class Post**
 avg_time = models.CharField(max_length = 40, default='')
 
-**views.py --> class in which ypu store post in database**
+**views.py --> class in which you store post in database**
   //add before saving post in database
     post.avg_time = CalculateTime.calTime(post.text)
     
