@@ -70,8 +70,10 @@ Modules Completed:
 1. Speech Recognition: https://github.com/DataTinkerer/SpeechRecognition
 2. MySQL Visualization: https://github.com/DataTinkerer/MySQL-Visualization
 3. Facial Recognition: https://github.com/DataTinkerer/Face-Recognition-DjangoApp
-4. ReadTime: 
-5. Blog Structure:
-6. Recommender System:
+4. Ranking Post: https://github.com/gaurav476/Ranking-Post
+5. ReadTime: 
+6. Blog Structure:
+7. Recommender System:
+
 
  
