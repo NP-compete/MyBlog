@@ -10,6 +10,6 @@ Modules Completed:
 3. Facial Recognition: https://github.com/DataTinkerer/Face-Recognition-DjangoApp
 4. ReadTime: https://github.com/vikasgargvi/ReadingTextTime
 5. Blog Structure: https://github.com/MridulaGarg/DB_Project
-6. Recommender System:
+6. Recommender System:https://github.com/vishaljain04/autoTagging
 
  
