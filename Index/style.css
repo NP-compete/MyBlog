@@ -1,0 +1,42 @@
+.manufacturer{
+    max-height: 100%;
+    max-width: 100%;
+}
+a:link{
+    color: black;
+}
+a:visited{
+    color: black;
+}
+a:hover{
+    color: black;
+}
+a:active{
+    color: black;
+}
+a.button-collapse:link{
+    color: white;
+}
+a.button-collapse:visited{
+    color: white;
+}
+a.button-collapse:hover{
+    color: white;
+}
+a.button-collapse:active{
+    color: white;
+}
+body {
+    font-family: 'Comic Sans MS';
+}
+h2 {
+    color: #757575 !important;
+    font-family: 'Comic Sans MS', cursive;
+    font-weight:800;
+    text-transform:uppercase;
+}
+h1 {
+    font-family: 'Comic Sans MS', cursive;
+    font-weight:800;
+    text-transform:uppercase;
+}
