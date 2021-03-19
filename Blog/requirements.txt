@@ -10,7 +10,7 @@ dj-database-url==0.4.1
 psycopg2==2.7.1
 microurl==0.1.1
 appdirs==1.4.3
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 django-widget-tweaks==1.4.2
 packaging==16.8
 pyparsing==2.2.0
